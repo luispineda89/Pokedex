@@ -95,10 +95,15 @@
 		20D924642695425E009A2BA0 /* Pokedex */ = {
 			isa = PBXGroup;
 			children = (
+				20D9249726954568009A2BA0 /* extension */,
+				20D924962695455A009A2BA0 /* ui */,
+				20D9249526954548009A2BA0 /* model */,
+				20D924942695453E009A2BA0 /* repository */,
+				20D9249326954532009A2BA0 /* db */,
+				20D9249226954528009A2BA0 /* entity */,
+				20D924912695451C009A2BA0 /* ws */,
+				20D924902695450F009A2BA0 /* supporting files */,
 				20D924652695425E009A2BA0 /* PokedexApp.swift */,
-				20D924672695425E009A2BA0 /* ContentView.swift */,
-				20D9246926954260009A2BA0 /* Assets.xcassets */,
-				20D9246E26954260009A2BA0 /* Info.plist */,
 				20D9246B26954260009A2BA0 /* Preview Content */,
 			);
 			path = Pokedex;
@@ -128,6 +133,73 @@
 				20D9248426954261009A2BA0 /* Info.plist */,
 			);
 			path = PokedexUITests;
+			sourceTree = "<group>";
+		};
+		20D924902695450F009A2BA0 /* supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				20D9246E26954260009A2BA0 /* Info.plist */,
+				20D9246926954260009A2BA0 /* Assets.xcassets */,
+			);
+			path = "supporting files";
+			sourceTree = "<group>";
+		};
+		20D924912695451C009A2BA0 /* ws */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ws;
+			sourceTree = "<group>";
+		};
+		20D9249226954528009A2BA0 /* entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = entity;
+			sourceTree = "<group>";
+		};
+		20D9249326954532009A2BA0 /* db */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = db;
+			sourceTree = "<group>";
+		};
+		20D924942695453E009A2BA0 /* repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = repository;
+			sourceTree = "<group>";
+		};
+		20D9249526954548009A2BA0 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		20D924962695455A009A2BA0 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				20D9249826954890009A2BA0 /* components */,
+				20D924672695425E009A2BA0 /* ContentView.swift */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		20D9249726954568009A2BA0 /* extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = extension;
+			sourceTree = "<group>";
+		};
+		20D9249826954890009A2BA0 /* components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -419,8 +491,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Pokedex/Preview Content\"";
+				DEVELOPMENT_TEAM = 7M6CH8Z92Q;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Pokedex/Info.plist;
+				INFOPLIST_FILE = "Pokedex/supporting files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -440,8 +513,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Pokedex/Preview Content\"";
+				DEVELOPMENT_TEAM = 7M6CH8Z92Q;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Pokedex/Info.plist;
+				INFOPLIST_FILE = "Pokedex/supporting files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -460,6 +534,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7M6CH8Z92Q;
 				INFOPLIST_FILE = PokedexTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -481,6 +556,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7M6CH8Z92Q;
 				INFOPLIST_FILE = PokedexTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -501,6 +577,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7M6CH8Z92Q;
 				INFOPLIST_FILE = PokedexUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -520,6 +597,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7M6CH8Z92Q;
 				INFOPLIST_FILE = PokedexUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
