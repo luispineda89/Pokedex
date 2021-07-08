@@ -3,16 +3,40 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2096D0A1269614B00054861D /* GenerationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2096D0A0269614B00054861D /* GenerationClient.swift */; };
+		2096D0A4269614F20054861D /* GenerationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2096D0A3269614F20054861D /* GenerationModel.swift */; };
+		2096D0A72696155E0054861D /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2096D0A62696155E0054861D /* NavigationBarModifier.swift */; };
+		2096D0AF269615D90054861D /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2096D0A9269615D90054861D /* Roboto-Regular.ttf */; };
+		2096D0B0269615D90054861D /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2096D0AA269615D90054861D /* Roboto-Italic.ttf */; };
+		2096D0B1269615D90054861D /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2096D0AB269615D90054861D /* Roboto-Medium.ttf */; };
+		2096D0B2269615D90054861D /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2096D0AC269615D90054861D /* Roboto-BoldItalic.ttf */; };
+		2096D0B3269615D90054861D /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2096D0AD269615D90054861D /* Roboto-Bold.ttf */; };
+		2096D0B4269615D90054861D /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2096D0AE269615D90054861D /* Roboto-Light.ttf */; };
+		2096D0B72696165D0054861D /* FontsModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2096D0B62696165D0054861D /* FontsModifiers.swift */; };
+		2096D0B9269642940054861D /* GenerationCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2096D0B8269642940054861D /* GenerationCellView.swift */; };
+		2096D0BC269643610054861D /* SearchCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2096D0BB269643610054861D /* SearchCore.swift */; };
+		2096D0BE2696437E0054861D /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2096D0BD2696437E0054861D /* SearchView.swift */; };
+		2096D0C1269643C70054861D /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2096D0C0269643C70054861D /* AlertView.swift */; };
+		2096D0C4269643FA0054861D /* AlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2096D0C3269643FA0054861D /* AlertModel.swift */; };
+		2096D0C7269644310054861D /* ButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2096D0C6269644310054861D /* ButtonsView.swift */; };
+		2096D0CC269644E00054861D /* Redactable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2096D0CB269644E00054861D /* Redactable.swift */; };
+		2096D0CF269666AD0054861D /* GenerartionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2096D0CE269666AD0054861D /* GenerartionTests.swift */; };
+		2096D0D12696AC9F0054861D /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2096D0D02696AC9F0054861D /* Endpoint.swift */; };
 		20D924662695425E009A2BA0 /* PokedexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D924652695425E009A2BA0 /* PokedexApp.swift */; };
-		20D924682695425E009A2BA0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D924672695425E009A2BA0 /* ContentView.swift */; };
 		20D9246A26954260009A2BA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20D9246926954260009A2BA0 /* Assets.xcassets */; };
 		20D9246D26954260009A2BA0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20D9246C26954260009A2BA0 /* Preview Assets.xcassets */; };
-		20D9247826954261009A2BA0 /* PokedexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D9247726954261009A2BA0 /* PokedexTests.swift */; };
 		20D9248326954261009A2BA0 /* PokedexUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D9248226954261009A2BA0 /* PokedexUITests.swift */; };
+		20D9249B26954B84009A2BA0 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 20D9249A26954B84009A2BA0 /* ComposableArchitecture */; };
+		20D9249E26954C06009A2BA0 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 20D9249D26954C06009A2BA0 /* SDWebImageSwiftUI */; };
+		20D924A126954CB7009A2BA0 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D924A026954CB7009A2BA0 /* ColorExtension.swift */; };
+		20D924A526954FC3009A2BA0 /* GenerationCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D924A426954FC3009A2BA0 /* GenerationCore.swift */; };
+		20D924A726954FDD009A2BA0 /* GenerationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D924A626954FDD009A2BA0 /* GenerationView.swift */; };
+		20D924AC26955071009A2BA0 /* PokeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D924AB26955071009A2BA0 /* PokeAPI.swift */; };
+		20D924AF26955937009A2BA0 /* PokemonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D924AE26955937009A2BA0 /* PokemonModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,18 +57,40 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2096D0A0269614B00054861D /* GenerationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationClient.swift; sourceTree = "<group>"; };
+		2096D0A3269614F20054861D /* GenerationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationModel.swift; sourceTree = "<group>"; };
+		2096D0A62696155E0054861D /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
+		2096D0A9269615D90054861D /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		2096D0AA269615D90054861D /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
+		2096D0AB269615D90054861D /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		2096D0AC269615D90054861D /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
+		2096D0AD269615D90054861D /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		2096D0AE269615D90054861D /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		2096D0B62696165D0054861D /* FontsModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsModifiers.swift; sourceTree = "<group>"; };
+		2096D0B8269642940054861D /* GenerationCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationCellView.swift; sourceTree = "<group>"; };
+		2096D0BB269643610054861D /* SearchCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCore.swift; sourceTree = "<group>"; };
+		2096D0BD2696437E0054861D /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		2096D0C0269643C70054861D /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		2096D0C3269643FA0054861D /* AlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModel.swift; sourceTree = "<group>"; };
+		2096D0C6269644310054861D /* ButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsView.swift; sourceTree = "<group>"; };
+		2096D0CB269644E00054861D /* Redactable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Redactable.swift; sourceTree = "<group>"; };
+		2096D0CE269666AD0054861D /* GenerartionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerartionTests.swift; sourceTree = "<group>"; };
+		2096D0D02696AC9F0054861D /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		20D924622695425E009A2BA0 /* Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20D924652695425E009A2BA0 /* PokedexApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexApp.swift; sourceTree = "<group>"; };
-		20D924672695425E009A2BA0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		20D9246926954260009A2BA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20D9246C26954260009A2BA0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		20D9246E26954260009A2BA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20D9247326954260009A2BA0 /* PokedexTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokedexTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		20D9247726954261009A2BA0 /* PokedexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexTests.swift; sourceTree = "<group>"; };
 		20D9247926954261009A2BA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20D9247E26954261009A2BA0 /* PokedexUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokedexUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20D9248226954261009A2BA0 /* PokedexUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexUITests.swift; sourceTree = "<group>"; };
 		20D9248426954261009A2BA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20D924A026954CB7009A2BA0 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		20D924A426954FC3009A2BA0 /* GenerationCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationCore.swift; sourceTree = "<group>"; };
+		20D924A626954FDD009A2BA0 /* GenerationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationView.swift; sourceTree = "<group>"; };
+		20D924AB26955071009A2BA0 /* PokeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeAPI.swift; sourceTree = "<group>"; };
+		20D924AE26955937009A2BA0 /* PokemonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +98,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20D9249E26954C06009A2BA0 /* SDWebImageSwiftUI in Frameworks */,
+				20D9249B26954B84009A2BA0 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +120,93 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2096D09F2696149E0054861D /* generation */ = {
+			isa = PBXGroup;
+			children = (
+				2096D0A0269614B00054861D /* GenerationClient.swift */,
+			);
+			path = generation;
+			sourceTree = "<group>";
+		};
+		2096D0A2269614D60054861D /* generation */ = {
+			isa = PBXGroup;
+			children = (
+				2096D0A3269614F20054861D /* GenerationModel.swift */,
+			);
+			path = generation;
+			sourceTree = "<group>";
+		};
+		2096D0A52696154E0054861D /* modifier */ = {
+			isa = PBXGroup;
+			children = (
+				2096D0A62696155E0054861D /* NavigationBarModifier.swift */,
+				2096D0B62696165D0054861D /* FontsModifiers.swift */,
+			);
+			path = modifier;
+			sourceTree = "<group>";
+		};
+		2096D0A82696159D0054861D /* font */ = {
+			isa = PBXGroup;
+			children = (
+				2096D0AD269615D90054861D /* Roboto-Bold.ttf */,
+				2096D0AC269615D90054861D /* Roboto-BoldItalic.ttf */,
+				2096D0AA269615D90054861D /* Roboto-Italic.ttf */,
+				2096D0AE269615D90054861D /* Roboto-Light.ttf */,
+				2096D0AB269615D90054861D /* Roboto-Medium.ttf */,
+				2096D0A9269615D90054861D /* Roboto-Regular.ttf */,
+			);
+			path = font;
+			sourceTree = "<group>";
+		};
+		2096D0BA269643340054861D /* search */ = {
+			isa = PBXGroup;
+			children = (
+				2096D0BB269643610054861D /* SearchCore.swift */,
+				2096D0BD2696437E0054861D /* SearchView.swift */,
+			);
+			path = search;
+			sourceTree = "<group>";
+		};
+		2096D0BF269643AB0054861D /* alert */ = {
+			isa = PBXGroup;
+			children = (
+				2096D0C0269643C70054861D /* AlertView.swift */,
+			);
+			path = alert;
+			sourceTree = "<group>";
+		};
+		2096D0C2269643EB0054861D /* alert */ = {
+			isa = PBXGroup;
+			children = (
+				2096D0C3269643FA0054861D /* AlertModel.swift */,
+			);
+			path = alert;
+			sourceTree = "<group>";
+		};
+		2096D0C5269644190054861D /* buttons */ = {
+			isa = PBXGroup;
+			children = (
+				2096D0C6269644310054861D /* ButtonsView.swift */,
+			);
+			path = buttons;
+			sourceTree = "<group>";
+		};
+		2096D0C8269644BA0054861D /* redactable */ = {
+			isa = PBXGroup;
+			children = (
+				2096D0CB269644E00054861D /* Redactable.swift */,
+			);
+			path = redactable;
+			sourceTree = "<group>";
+		};
+		2096D0CD269666930054861D /* generation */ = {
+			isa = PBXGroup;
+			children = (
+				2096D0CE269666AD0054861D /* GenerartionTests.swift */,
+			);
+			path = generation;
+			sourceTree = "<group>";
+		};
 		20D924592695425E009A2BA0 = {
 			isa = PBXGroup;
 			children = (
@@ -120,7 +255,7 @@
 		20D9247626954261009A2BA0 /* PokedexTests */ = {
 			isa = PBXGroup;
 			children = (
-				20D9247726954261009A2BA0 /* PokedexTests.swift */,
+				2096D0CD269666930054861D /* generation */,
 				20D9247926954261009A2BA0 /* Info.plist */,
 			);
 			path = PokedexTests;
@@ -138,6 +273,7 @@
 		20D924902695450F009A2BA0 /* supporting files */ = {
 			isa = PBXGroup;
 			children = (
+				2096D0A82696159D0054861D /* font */,
 				20D9246E26954260009A2BA0 /* Info.plist */,
 				20D9246926954260009A2BA0 /* Assets.xcassets */,
 			);
@@ -147,6 +283,7 @@
 		20D924912695451C009A2BA0 /* ws */ = {
 			isa = PBXGroup;
 			children = (
+				20D924AA2695505C009A2BA0 /* api */,
 			);
 			path = ws;
 			sourceTree = "<group>";
@@ -168,6 +305,7 @@
 		20D924942695453E009A2BA0 /* repository */ = {
 			isa = PBXGroup;
 			children = (
+				2096D09F2696149E0054861D /* generation */,
 			);
 			path = repository;
 			sourceTree = "<group>";
@@ -175,6 +313,9 @@
 		20D9249526954548009A2BA0 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				2096D0C2269643EB0054861D /* alert */,
+				2096D0A2269614D60054861D /* generation */,
+				20D924AD26955917009A2BA0 /* pokemon */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -183,7 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				20D9249826954890009A2BA0 /* components */,
-				20D924672695425E009A2BA0 /* ContentView.swift */,
+				20D924A226954F7A009A2BA0 /* generation */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -191,6 +332,7 @@
 		20D9249726954568009A2BA0 /* extension */ = {
 			isa = PBXGroup;
 			children = (
+				20D9249F26954CA8009A2BA0 /* color */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -198,8 +340,56 @@
 		20D9249826954890009A2BA0 /* components */ = {
 			isa = PBXGroup;
 			children = (
+				2096D0A52696154E0054861D /* modifier */,
+				2096D0C8269644BA0054861D /* redactable */,
+				2096D0C5269644190054861D /* buttons */,
+				2096D0BF269643AB0054861D /* alert */,
+				2096D0BA269643340054861D /* search */,
 			);
 			path = components;
+			sourceTree = "<group>";
+		};
+		20D9249F26954CA8009A2BA0 /* color */ = {
+			isa = PBXGroup;
+			children = (
+				20D924A026954CB7009A2BA0 /* ColorExtension.swift */,
+			);
+			path = color;
+			sourceTree = "<group>";
+		};
+		20D924A226954F7A009A2BA0 /* generation */ = {
+			isa = PBXGroup;
+			children = (
+				20D924A326954F8D009A2BA0 /* cell */,
+				20D924A426954FC3009A2BA0 /* GenerationCore.swift */,
+				20D924A626954FDD009A2BA0 /* GenerationView.swift */,
+			);
+			path = generation;
+			sourceTree = "<group>";
+		};
+		20D924A326954F8D009A2BA0 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				2096D0B8269642940054861D /* GenerationCellView.swift */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		20D924AA2695505C009A2BA0 /* api */ = {
+			isa = PBXGroup;
+			children = (
+				2096D0D02696AC9F0054861D /* Endpoint.swift */,
+				20D924AB26955071009A2BA0 /* PokeAPI.swift */,
+			);
+			path = api;
+			sourceTree = "<group>";
+		};
+		20D924AD26955917009A2BA0 /* pokemon */ = {
+			isa = PBXGroup;
+			children = (
+				20D924AE26955937009A2BA0 /* PokemonModel.swift */,
+			);
+			path = pokemon;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,6 +408,10 @@
 			dependencies = (
 			);
 			name = Pokedex;
+			packageProductDependencies = (
+				20D9249A26954B84009A2BA0 /* ComposableArchitecture */,
+				20D9249D26954C06009A2BA0 /* SDWebImageSwiftUI */,
+			);
 			productName = Pokedex;
 			productReference = 20D924622695425E009A2BA0 /* Pokedex.app */;
 			productType = "com.apple.product-type.application";
@@ -289,6 +483,10 @@
 				Base,
 			);
 			mainGroup = 20D924592695425E009A2BA0;
+			packageReferences = (
+				20D9249926954B84009A2BA0 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				20D9249C26954C06009A2BA0 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = 20D924632695425E009A2BA0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -305,7 +503,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2096D0B3269615D90054861D /* Roboto-Bold.ttf in Resources */,
+				2096D0B2269615D90054861D /* Roboto-BoldItalic.ttf in Resources */,
+				2096D0B1269615D90054861D /* Roboto-Medium.ttf in Resources */,
+				2096D0AF269615D90054861D /* Roboto-Regular.ttf in Resources */,
+				2096D0B0269615D90054861D /* Roboto-Italic.ttf in Resources */,
 				20D9246D26954260009A2BA0 /* Preview Assets.xcassets in Resources */,
+				2096D0B4269615D90054861D /* Roboto-Light.ttf in Resources */,
 				20D9246A26954260009A2BA0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -331,7 +535,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20D924682695425E009A2BA0 /* ContentView.swift in Sources */,
+				2096D0A72696155E0054861D /* NavigationBarModifier.swift in Sources */,
+				20D924A526954FC3009A2BA0 /* GenerationCore.swift in Sources */,
+				2096D0B9269642940054861D /* GenerationCellView.swift in Sources */,
+				2096D0BC269643610054861D /* SearchCore.swift in Sources */,
+				2096D0C4269643FA0054861D /* AlertModel.swift in Sources */,
+				20D924A126954CB7009A2BA0 /* ColorExtension.swift in Sources */,
+				2096D0C1269643C70054861D /* AlertView.swift in Sources */,
+				2096D0A4269614F20054861D /* GenerationModel.swift in Sources */,
+				2096D0B72696165D0054861D /* FontsModifiers.swift in Sources */,
+				2096D0C7269644310054861D /* ButtonsView.swift in Sources */,
+				2096D0D12696AC9F0054861D /* Endpoint.swift in Sources */,
+				20D924AC26955071009A2BA0 /* PokeAPI.swift in Sources */,
+				20D924A726954FDD009A2BA0 /* GenerationView.swift in Sources */,
+				2096D0A1269614B00054861D /* GenerationClient.swift in Sources */,
+				2096D0BE2696437E0054861D /* SearchView.swift in Sources */,
+				20D924AF26955937009A2BA0 /* PokemonModel.swift in Sources */,
+				2096D0CC269644E00054861D /* Redactable.swift in Sources */,
 				20D924662695425E009A2BA0 /* PokedexApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,7 +560,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20D9247826954261009A2BA0 /* PokedexTests.swift in Sources */,
+				2096D0CF269666AD0054861D /* GenerartionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,7 +722,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.pineda.Pokedex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -524,7 +744,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.pineda.Pokedex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -652,6 +872,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		20D9249926954B84009A2BA0 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.20.0;
+			};
+		};
+		20D9249C26954C06009A2BA0 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		20D9249A26954B84009A2BA0 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 20D9249926954B84009A2BA0 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+		20D9249D26954C06009A2BA0 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 20D9249C26954C06009A2BA0 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 20D9245A2695425E009A2BA0 /* Project object */;
 }

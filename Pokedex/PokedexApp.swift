@@ -6,12 +6,19 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 @main
 struct PokedexApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            GenerationView(
+                store: Store(
+                    initialState: GenerationState(),
+                    reducer: generationReducer,
+                    environment: GenerationEnvironment()
+                )
+            )
         }
     }
 }
