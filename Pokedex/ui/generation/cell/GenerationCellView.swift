@@ -14,6 +14,8 @@ struct GenerationCellView: View {
     private let shadowY: CGFloat = 2
     let width: CGFloat = UIScreen.main.bounds.size.width
     
+    @State var isAnimating: Bool = true
+    
     var pokemon: PokemonModel
     var action: () -> ()
     
@@ -22,7 +24,7 @@ struct GenerationCellView: View {
             action()
         }, label: {
             VStack {
-                WebImage(url: Endpoint.urlSprinteAnimated(id: pokemon.id), isAnimating: .constant(true))
+                WebImage(url: Endpoint.urlSprinteAnimated(id: pokemon.id), isAnimating: $isAnimating)
                     .placeholder(Image("pokeball-placeholder"))
                 .playbackRate(0.8)
                 .playbackMode(.normal)
@@ -40,6 +42,9 @@ struct GenerationCellView: View {
                     radius: shadowRadius,
                     x: .zero,
                     y: shadowY)
+            .onDisappear {
+                isAnimating = false
+            }
         }).buttonStyle(PlainButtonStyle())
     }
 }

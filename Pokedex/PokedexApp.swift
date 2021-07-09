@@ -10,6 +10,9 @@ import ComposableArchitecture
 
 @main
 struct PokedexApp: App {
+    
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     var body: some Scene {
         WindowGroup {
             GenerationView(

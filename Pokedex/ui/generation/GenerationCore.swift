@@ -35,9 +35,9 @@ struct GenerationState: Equatable {
     var pokemons: [PokemonModel] = .mock(15)
     var _pokemons: [PokemonModel] = []
     var pokemonState: PokemonDetailState?
+    var voteState: VoteState?
     var showAlert: Bool = false
     var alert: AlertModel = AlertModel()
-    
     
     mutating func alertError(error: String) {
         self.alert.set(id: 1,
@@ -166,4 +166,4 @@ let generationReducer = Reducer<GenerationState, GenerationAction, GenerationEnv
         case .pokemonActions(_):
             return .none
         }
-    })
+    }).debug()

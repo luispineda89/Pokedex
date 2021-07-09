@@ -39,7 +39,7 @@ struct PokemonDetailModel: Identifiable, Codable, Equatable {
 #if DEBUG
 extension PokemonDetailModel {
     static var mock = PokemonDetailModel(id: 1,
-                                         name: "bulbasaur",
+                                         name: "pokemon 1",
                                          weight: 8,
                                          height: 27,
                                          pokedexId: 1,
@@ -47,7 +47,7 @@ extension PokemonDetailModel {
                                          abilities: .mock(2),
                                          moves: .mock(2))
     
-    func mock(id: Int = .zero,
+    static func mock(id: Int = .zero,
               name: String = "",
               weight: Int = .zero,
               height: Int = .zero,

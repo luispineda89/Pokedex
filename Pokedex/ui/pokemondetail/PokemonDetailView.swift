@@ -29,7 +29,7 @@ struct PokemonDetailView: View {
                 VStack(spacing: 10.0) {
                     WebImage(url: Endpoint.urlSprinteOfficial(id: viewStore.pokemon.id))
                         .resizable() // Resizable like SwiftUI.Image, you must use this modifier or the view will use the image bitmap size
-                        .placeholder(Image("pokeball-black")) // Placeholder Image
+                        .placeholder(Image("pokeball-placeholder")) // Placeholder Image
                         .indicator(.activity) // Activity Indicator
                         .animation(.easeInOut(duration: 0.5)) // Animation Duration
                         .transition(.fade) // Fade Transition
@@ -254,7 +254,7 @@ struct PokemonDetailView: View {
         var body: some View {
             WebImage(url: URL(string: url) )
                 .resizable() // Resizable like SwiftUI.Image, you must use this modifier or the view will use the image bitmap size
-                .placeholder(Image("pokeball-black")) // Placeholder Image
+                .placeholder(Image("pokeball-placeholder")) // Placeholder Image
                 .indicator(.activity) // Activity Indicator
                 .animation(.easeInOut(duration: 0.5)) // Animation Duration
                 .transition(.fade) // Fade Transition

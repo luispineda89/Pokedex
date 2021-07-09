@@ -19,6 +19,18 @@
 		20396C8E2697669D00D2B1D2 /* PokemonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20396C8D2697669D00D2B1D2 /* PokemonType.swift */; };
 		20396C9126976AEA00D2B1D2 /* PokemonClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20396C9026976AEA00D2B1D2 /* PokemonClient.swift */; };
 		20396C9426976B4100D2B1D2 /* MoveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20396C9326976B4100D2B1D2 /* MoveModel.swift */; };
+		2072DE592698839900B3F45A /* VoteClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2072DE582698839900B3F45A /* VoteClient.swift */; };
+		2072DE5C269883CD00B3F45A /* VotePokemonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2072DE5B269883CD00B3F45A /* VotePokemonModel.swift */; };
+		2072DE5F2698842E00B3F45A /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 2072DE5E2698842E00B3F45A /* Realm */; };
+		2072DE612698842E00B3F45A /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2072DE602698842E00B3F45A /* RealmSwift */; };
+		2072DE632698844800B3F45A /* PokemonDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2072DE622698844800B3F45A /* PokemonDB.swift */; };
+		2072DE652698846700B3F45A /* PokemonEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2072DE642698846700B3F45A /* PokemonEntity.swift */; };
+		2072DE6A269885B400B3F45A /* VoteCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2072DE69269885B400B3F45A /* VoteCellView.swift */; };
+		2072DE6C269885D400B3F45A /* VoteCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2072DE6B269885D400B3F45A /* VoteCardView.swift */; };
+		2072DE6E269885F400B3F45A /* VoteCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2072DE6D269885F400B3F45A /* VoteCore.swift */; };
+		2072DE702698860400B3F45A /* VoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2072DE6F2698860400B3F45A /* VoteView.swift */; };
+		2072DE7226988A2D00B3F45A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2072DE7126988A2D00B3F45A /* AppDelegate.swift */; };
+		2072DE772698FAA400B3F45A /* VoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2072DE762698FAA400B3F45A /* VoteTests.swift */; };
 		2096D0A1269614B00054861D /* GenerationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2096D0A0269614B00054861D /* GenerationClient.swift */; };
 		2096D0A4269614F20054861D /* GenerationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2096D0A3269614F20054861D /* GenerationModel.swift */; };
 		2096D0A72696155E0054861D /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2096D0A62696155E0054861D /* NavigationBarModifier.swift */; };
@@ -81,6 +93,16 @@
 		20396C8D2697669D00D2B1D2 /* PokemonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonType.swift; sourceTree = "<group>"; };
 		20396C9026976AEA00D2B1D2 /* PokemonClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonClient.swift; sourceTree = "<group>"; };
 		20396C9326976B4100D2B1D2 /* MoveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveModel.swift; sourceTree = "<group>"; };
+		2072DE582698839900B3F45A /* VoteClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteClient.swift; sourceTree = "<group>"; };
+		2072DE5B269883CD00B3F45A /* VotePokemonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotePokemonModel.swift; sourceTree = "<group>"; };
+		2072DE622698844800B3F45A /* PokemonDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDB.swift; sourceTree = "<group>"; };
+		2072DE642698846700B3F45A /* PokemonEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonEntity.swift; sourceTree = "<group>"; };
+		2072DE69269885B400B3F45A /* VoteCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteCellView.swift; sourceTree = "<group>"; };
+		2072DE6B269885D400B3F45A /* VoteCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteCardView.swift; sourceTree = "<group>"; };
+		2072DE6D269885F400B3F45A /* VoteCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteCore.swift; sourceTree = "<group>"; };
+		2072DE6F2698860400B3F45A /* VoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteView.swift; sourceTree = "<group>"; };
+		2072DE7126988A2D00B3F45A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2072DE762698FAA400B3F45A /* VoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteTests.swift; sourceTree = "<group>"; };
 		2096D0A0269614B00054861D /* GenerationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationClient.swift; sourceTree = "<group>"; };
 		2096D0A3269614F20054861D /* GenerationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationModel.swift; sourceTree = "<group>"; };
 		2096D0A62696155E0054861D /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
@@ -122,6 +144,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2072DE612698842E00B3F45A /* RealmSwift in Frameworks */,
+				2072DE5F2698842E00B3F45A /* Realm in Frameworks */,
 				20D9249E26954C06009A2BA0 /* SDWebImageSwiftUI in Frameworks */,
 				20D9249B26954B84009A2BA0 /* ComposableArchitecture in Frameworks */,
 			);
@@ -202,6 +226,57 @@
 				20396C9326976B4100D2B1D2 /* MoveModel.swift */,
 			);
 			path = move;
+			sourceTree = "<group>";
+		};
+		2072DE572698836B00B3F45A /* vote */ = {
+			isa = PBXGroup;
+			children = (
+				2072DE582698839900B3F45A /* VoteClient.swift */,
+			);
+			path = vote;
+			sourceTree = "<group>";
+		};
+		2072DE5A269883BB00B3F45A /* vote */ = {
+			isa = PBXGroup;
+			children = (
+				2072DE5B269883CD00B3F45A /* VotePokemonModel.swift */,
+			);
+			path = vote;
+			sourceTree = "<group>";
+		};
+		2072DE662698858200B3F45A /* vote */ = {
+			isa = PBXGroup;
+			children = (
+				2072DE682698859E00B3F45A /* cell */,
+				2072DE672698859600B3F45A /* card */,
+				2072DE6D269885F400B3F45A /* VoteCore.swift */,
+				2072DE6F2698860400B3F45A /* VoteView.swift */,
+			);
+			path = vote;
+			sourceTree = "<group>";
+		};
+		2072DE672698859600B3F45A /* card */ = {
+			isa = PBXGroup;
+			children = (
+				2072DE6B269885D400B3F45A /* VoteCardView.swift */,
+			);
+			path = card;
+			sourceTree = "<group>";
+		};
+		2072DE682698859E00B3F45A /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				2072DE69269885B400B3F45A /* VoteCellView.swift */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		2072DE752698FA6D00B3F45A /* vote */ = {
+			isa = PBXGroup;
+			children = (
+				2072DE762698FAA400B3F45A /* VoteTests.swift */,
+			);
+			path = vote;
 			sourceTree = "<group>";
 		};
 		2096D09F2696149E0054861D /* generation */ = {
@@ -323,6 +398,7 @@
 				20D924912695451C009A2BA0 /* ws */,
 				20D924902695450F009A2BA0 /* supporting files */,
 				20D924652695425E009A2BA0 /* PokedexApp.swift */,
+				2072DE7126988A2D00B3F45A /* AppDelegate.swift */,
 				20D9246B26954260009A2BA0 /* Preview Content */,
 			);
 			path = Pokedex;
@@ -342,6 +418,7 @@
 				2096D0CD269666930054861D /* generation */,
 				201FF8392697F29B007BB7F7 /* pokemondetail */,
 				201FF83C2697FD86007BB7F7 /* movedetail */,
+				2072DE752698FA6D00B3F45A /* vote */,
 				20D9247926954261009A2BA0 /* Info.plist */,
 			);
 			path = PokedexTests;
@@ -377,6 +454,7 @@
 		20D9249226954528009A2BA0 /* entity */ = {
 			isa = PBXGroup;
 			children = (
+				2072DE642698846700B3F45A /* PokemonEntity.swift */,
 			);
 			path = entity;
 			sourceTree = "<group>";
@@ -384,6 +462,7 @@
 		20D9249326954532009A2BA0 /* db */ = {
 			isa = PBXGroup;
 			children = (
+				2072DE622698844800B3F45A /* PokemonDB.swift */,
 			);
 			path = db;
 			sourceTree = "<group>";
@@ -393,6 +472,7 @@
 			children = (
 				2096D09F2696149E0054861D /* generation */,
 				20396C8F26976AD500D2B1D2 /* pokemon */,
+				2072DE572698836B00B3F45A /* vote */,
 			);
 			path = repository;
 			sourceTree = "<group>";
@@ -400,6 +480,7 @@
 		20D9249526954548009A2BA0 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				2072DE5A269883BB00B3F45A /* vote */,
 				2096D0C2269643EB0054861D /* alert */,
 				2096D0A2269614D60054861D /* generation */,
 				20396C9226976B2800D2B1D2 /* move */,
@@ -414,6 +495,7 @@
 				20D9249826954890009A2BA0 /* components */,
 				20D924A226954F7A009A2BA0 /* generation */,
 				20396C7C2697656900D2B1D2 /* pokemondetail */,
+				2072DE662698858200B3F45A /* vote */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -503,6 +585,8 @@
 			packageProductDependencies = (
 				20D9249A26954B84009A2BA0 /* ComposableArchitecture */,
 				20D9249D26954C06009A2BA0 /* SDWebImageSwiftUI */,
+				2072DE5E2698842E00B3F45A /* Realm */,
+				2072DE602698842E00B3F45A /* RealmSwift */,
 			);
 			productName = Pokedex;
 			productReference = 20D924622695425E009A2BA0 /* Pokedex.app */;
@@ -578,6 +662,7 @@
 			packageReferences = (
 				20D9249926954B84009A2BA0 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				20D9249C26954C06009A2BA0 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				2072DE5D2698842E00B3F45A /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 			);
 			productRefGroup = 20D924632695425E009A2BA0 /* Products */;
 			projectDirPath = "";
@@ -629,7 +714,10 @@
 			files = (
 				20396C7E2697659400D2B1D2 /* PokemonDetailCore.swift in Sources */,
 				20396C80269765A500D2B1D2 /* PokemonDetailView.swift in Sources */,
+				2072DE702698860400B3F45A /* VoteView.swift in Sources */,
+				2072DE632698844800B3F45A /* PokemonDB.swift in Sources */,
 				2096D0A72696155E0054861D /* NavigationBarModifier.swift in Sources */,
+				2072DE652698846700B3F45A /* PokemonEntity.swift in Sources */,
 				20396C9126976AEA00D2B1D2 /* PokemonClient.swift in Sources */,
 				20D924A526954FC3009A2BA0 /* GenerationCore.swift in Sources */,
 				2096D0B9269642940054861D /* GenerationCellView.swift in Sources */,
@@ -637,12 +725,17 @@
 				2096D0BC269643610054861D /* SearchCore.swift in Sources */,
 				20396C882697664800D2B1D2 /* MoveCellView.swift in Sources */,
 				2096D0C4269643FA0054861D /* AlertModel.swift in Sources */,
+				2072DE7226988A2D00B3F45A /* AppDelegate.swift in Sources */,
+				2072DE6E269885F400B3F45A /* VoteCore.swift in Sources */,
 				20396C8A2697666600D2B1D2 /* PokemonDetailModel.swift in Sources */,
 				20D924A126954CB7009A2BA0 /* ColorExtension.swift in Sources */,
 				20396C842697662B00D2B1D2 /* MoveDetailCore.swift in Sources */,
 				2096D0C1269643C70054861D /* AlertView.swift in Sources */,
 				2096D0A4269614F20054861D /* GenerationModel.swift in Sources */,
+				2072DE6A269885B400B3F45A /* VoteCellView.swift in Sources */,
+				2072DE592698839900B3F45A /* VoteClient.swift in Sources */,
 				2096D0B72696165D0054861D /* FontsModifiers.swift in Sources */,
+				2072DE5C269883CD00B3F45A /* VotePokemonModel.swift in Sources */,
 				2096D0C7269644310054861D /* ButtonsView.swift in Sources */,
 				2096D0D12696AC9F0054861D /* Endpoint.swift in Sources */,
 				20D924AC26955071009A2BA0 /* PokeAPI.swift in Sources */,
@@ -650,6 +743,7 @@
 				20396C8C2697668A00D2B1D2 /* PokemonSpeciesModel.swift in Sources */,
 				20396C8E2697669D00D2B1D2 /* PokemonType.swift in Sources */,
 				20396C862697663800D2B1D2 /* MoveDetailView.swift in Sources */,
+				2072DE6C269885D400B3F45A /* VoteCardView.swift in Sources */,
 				2096D0A1269614B00054861D /* GenerationClient.swift in Sources */,
 				2096D0BE2696437E0054861D /* SearchView.swift in Sources */,
 				20D924AF26955937009A2BA0 /* PokemonModel.swift in Sources */,
@@ -665,6 +759,7 @@
 				201FF83B2697F2DB007BB7F7 /* PokemonDetailTests.swift in Sources */,
 				201FF83E2697FDB9007BB7F7 /* MoveDetailTests.swift in Sources */,
 				2096D0CF269666AD0054861D /* GenerartionTests.swift in Sources */,
+				2072DE772698FAA400B3F45A /* VoteTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -978,6 +1073,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2072DE5D2698842E00B3F45A /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.10.0;
+			};
+		};
 		20D9249926954B84009A2BA0 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
@@ -997,6 +1100,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2072DE5E2698842E00B3F45A /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2072DE5D2698842E00B3F45A /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		2072DE602698842E00B3F45A /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2072DE5D2698842E00B3F45A /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
 		20D9249A26954B84009A2BA0 /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 20D9249926954B84009A2BA0 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;

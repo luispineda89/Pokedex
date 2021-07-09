@@ -85,12 +85,24 @@ struct GenerationView: View {
                 }.navigationBarColor(.pBackgroundCard)
                 .navigationBarTitle(Text("Pokedex"), displayMode: .inline)
                 .navigationBarItems(trailing:
-                                        
-                                        Button(action: { viewStore.send(.searchTapped) }) {
-                                            Image(systemName: "magnifyingglass")
-                                                .padding(8)
-                                        }.disabled(viewStore.search != nil)
-                                        .buttonStyle(PlainButtonStyle())
+                                        HStack {
+                                            Button(action: { viewStore.send(.searchTapped) }) {
+                                                Image(systemName: "magnifyingglass")
+                                                    .padding(8)
+                                            }.disabled(viewStore.search != nil)
+                                            .buttonStyle(PlainButtonStyle())
+                                            
+                                            NavigationLink(destination: VoteView(
+                                                store: Store(
+                                                    initialState: VoteState(generation: viewStore.generation,
+                                                                            pokemonsGeneration: viewStore.pokemons),
+                                                    reducer: voteReducer,
+                                                    environment: VoteEnvironment()
+                                                )
+                                            )) {
+                                                Label("", systemImage: "heart.fill")
+                                            }
+                                        }
                 )
                 .onAppear(perform: {
                     viewStore.send(.load)

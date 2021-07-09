@@ -34,9 +34,6 @@ struct PokeAPI {
     }()
     
     static func send<T: Decodable>(_ request: URLRequest, _ decoder: JSONDecoder = JSONDecoder()) -> Effect<T, ErrorMessage> {
-        
-        //TODO: Quitar el print al finalizar el desarrollo
-        
         return URLSession.shared
             .dataTaskPublisher(for: request)
             .mapError{
@@ -44,11 +41,9 @@ struct PokeAPI {
             }
             .map { $0.data }
             .decode(type: T.self, decoder: jsonDecoder)
-            .print()
             .mapError { _ in
                 ErrorMessage(200, "Error Decode")
             }
             .eraseToEffect()
     }
-    
 }
