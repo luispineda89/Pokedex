@@ -34,6 +34,7 @@ struct GenerationState: Equatable {
     var search: SearchState?
     var pokemons: [PokemonModel] = .mock(15)
     var _pokemons: [PokemonModel] = []
+    var pokemonState: PokemonDetailState?
     var showAlert: Bool = false
     var alert: AlertModel = AlertModel()
     
@@ -54,6 +55,8 @@ enum GenerationAction: Equatable {
     case generationResponse(Result<GenerationModel,ErrorMessage>)
     case searchTapped
     case search(SearchAction)
+    case pokemonActions(PokemonDetailAction)
+    case setNavigationPokemon(selection: PokemonModel?)
     case showAlert(Bool)
 }
 
@@ -63,6 +66,11 @@ struct GenerationEnvironment {
     var mainQueue = DispatchQueue.main.eraseToAnyScheduler()
 }
 
+extension GenerationEnvironment {
+    var pokemon: PokemonDetailEnvironment {
+        .init(mainQueue: mainQueue)
+    }
+}
 
 //MARK:- Reducer
 let generationReducer = Reducer<GenerationState, GenerationAction, GenerationEnvironment>.combine(
@@ -70,6 +78,11 @@ let generationReducer = Reducer<GenerationState, GenerationAction, GenerationEnv
         state: \.search,
         action: /GenerationAction.search,
         environment: { _ in SearchEnvironment() }
+    ),
+    pokemonDetailReducer.optional().pullback(
+        state: \.pokemonState,
+        action: /GenerationAction.pokemonActions,
+        environment: \.pokemon
     ),
     Reducer {
         state, action, environment in
@@ -140,6 +153,17 @@ let generationReducer = Reducer<GenerationState, GenerationAction, GenerationEnv
             return .none
         case .showAlert(let show):
             state.showAlert = show
+            return .none
+        case .setNavigationPokemon(selection: let pokemon):
+            guard let pokemon = pokemon else {
+                return .none
+            }
+            state.pokemonState = .init(pokemon: pokemon)
+            return .none
+        case .pokemonActions(.onDisappear):
+            state.pokemonState = nil
+            return .none
+        case .pokemonActions(_):
             return .none
         }
     })

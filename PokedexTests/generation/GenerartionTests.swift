@@ -165,4 +165,23 @@ class GenerartionTests: XCTestCase {
             }
         )
     }
+    
+    func testNavigationPokemon() throws {
+        let store = TestStore(
+            initialState: GenerationState(generation: .i, pokemons: .mock(2)),
+            reducer: generationReducer,
+            environment: GenerationEnvironment(
+                generationClient: .mock,
+                mainQueue: testScheduler.eraseToAnyScheduler())
+        )
+        store.assert(
+            .send(.setNavigationPokemon(selection: .mock)) {
+                $0.pokemonState = .init(pokemon: .mock)
+            },
+            .send(.setNavigationPokemon(selection: nil)),
+            .send(.pokemonActions(.onDisappear)) {
+                $0.pokemonState = nil
+            }
+        )
+    }
 }

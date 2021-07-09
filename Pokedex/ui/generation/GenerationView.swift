@@ -44,7 +44,7 @@ struct GenerationView: View {
                             LazyVGrid(columns: columns, spacing: 20) {
                                 ForEach(viewStore.pokemons) { pokemon in
                                     GenerationCellView(pokemon: pokemon) {
-
+                                        viewStore.send(.setNavigationPokemon(selection: pokemon))
                                     }.redacted(when: viewStore.loading, redactionType: .placeholder)
                                 }
                             }
@@ -73,8 +73,15 @@ struct GenerationView: View {
                                 get: { $0.showAlert },
                                 send: GenerationAction.showAlert
                                ))
-                    
-                    
+                    NavigationLink(
+                        destination: IfLetStore(self.store.scope(state: \.pokemonState,
+                                                                 action: GenerationAction.pokemonActions),
+                                                then: PokemonDetailView.init(store:)),
+                        isActive: viewStore.binding(get: { $0.pokemonState != nil },
+                                                    send: { _ in .setNavigationPokemon(selection: nil)}),
+                        label: {
+                            EmptyView()
+                        })
                 }.navigationBarColor(.pBackgroundCard)
                 .navigationBarTitle(Text("Pokedex"), displayMode: .inline)
                 .navigationBarItems(trailing:

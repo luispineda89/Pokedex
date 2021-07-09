@@ -23,7 +23,7 @@ struct  Pokemon: Hashable, Codable  {
     
     static func getId(url: String) -> Int {
         let id = URL(string: url)?.lastPathComponent ?? "0"
-        return Int(id) ?? 0
+        return Int(id) ?? .zero
     }
 }
 
