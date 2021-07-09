@@ -61,12 +61,12 @@ _
 
 ###### Lista de los pokemones votados - Cards para votar 
 
-![Preview8](/Preview/IMG_8PNG)
-![Preview9](/Preview/IMG_9PNG)
-![Preview10](/Preview/IMG_10PNG)
+![Preview8](/Preview/IMG_8.PNG)
+![Preview9](/Preview/IMG_9.PNG)
+![Preview10](/Preview/IMG_10.PNG)
 
 
 ###### Cobertura de los Test realizados a la parte lógica del proyecto 
 
-![Preview11](/Preview/IMG_11PNG)
+![Preview11](/Preview/IMG_11.PNG)
 
