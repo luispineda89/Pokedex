@@ -19,23 +19,18 @@ _Prueba de habilidades técnicas Condor Labs._
 
 ## Prueba ⚙️
 
-_
-Have a way to show all pokémon in order and separated by generation 1, 2, 3 & 4.
-● When a pokémon is tapped, the app should display another view that contains the following
-info:
-a. Official-Artwork
-b. Name
-c. Types (water, fire, poison, etc)
-d. Pokedex number.
-e. Weight & Height
-f. List of at least 5 moves (scratch, sand-attack, headbutt, etc)
-g. Optional: Another info you consider ok.
-
-● There should be another view for voting random pokémons using the ‘Like’ or ‘Dislike’ way.
-● Store into a local database each voted pokémon. The app should be able to show that list.
-_
-
-
+* Have a way to show all pokémon in order and separated by generation 1, 2, 3 & 4.  
+* When a pokémon is tapped, the app should display another view that contains the following  
+* info:
+        * a. Official-Artwork  
+        * b. Name  
+        * c. Types (water, fire, poison, etc)  
+        * d. Pokedex number.  
+        * e. Weight & Height  
+        * f. List of at least 5 moves (scratch, sand-attack, headbutt, etc)  
+        * g. Optional: Another info you consider ok.  
+* There should be another view for voting random pokémons using the ‘Like’ or ‘Dislike’ way.  
+* Store into a local database each voted pokémon. The app should be able to show that list.  
 
 ### Preview 🔧
 ###### Generaciones
