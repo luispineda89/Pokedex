@@ -166,4 +166,4 @@ let generationReducer = Reducer<GenerationState, GenerationAction, GenerationEnv
         case .pokemonActions(_):
             return .none
         }
-    }).debug()
+    })

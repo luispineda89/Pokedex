@@ -42,6 +42,9 @@ struct GenerationCellView: View {
                     radius: shadowRadius,
                     x: .zero,
                     y: shadowY)
+            .onAppear {
+                isAnimating = true
+            }
             .onDisappear {
                 isAnimating = false
             }

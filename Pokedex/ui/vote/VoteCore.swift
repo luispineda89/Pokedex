@@ -20,7 +20,6 @@ struct VoteState: Equatable {
     var showAlert: Bool = false
     var alert: AlertModel = AlertModel()
     
-    
     mutating func alertVoteEmpty() {
         self.alert.set(id: 1,
                        title: "No Pokemon!",
@@ -118,4 +117,4 @@ let voteReducer = Reducer<VoteState, VoteAction, VoteEnvironment> {
         state.showAlert = show
         return .none
     }
-}.debug()
+}
