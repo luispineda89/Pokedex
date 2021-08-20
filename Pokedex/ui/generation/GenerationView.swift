@@ -10,104 +10,94 @@ import ComposableArchitecture
 
 struct GenerationView: View {
     
-    let store: Store<GenerationState, GenerationAction>
     let columns = [
         GridItem(.adaptive(minimum: 100))
     ]
     
-    init(store: Store<GenerationState, GenerationAction>) {
-        self.store = store
-        let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.backgroundColor = UIColor.pBackgroundCard
-        UINavigationBar.appearance().standardAppearance = navBarAppearance
-    }
+    @ObservedObject var generationVM: GenerationViewModel = GenerationViewModel()
     
     var body: some View {
-        WithViewStore(store) { viewStore in
-            NavigationView {
-                ZStack {
-                    Color.pBackground.ignoresSafeArea(.all)
-                    VStack(spacing: 0.0) {
-                        IfLetStore(
-                            self.store.scope(
-                                state: \.search,
-                                action: GenerationAction.search
-                            ),
-                            then: SearchBarView.init(store:)
-                        )
+        NavigationView {
+            ZStack {
+                Color.pBackground.ignoresSafeArea(.all)
+                VStack(spacing: 0.0) {
+                    if generationVM.isSearch {
+                        SearchBarView(query: $generationVM.query) {
+                            self.generationVM.isSearch = false
+                        }
                         .transition(AnyTransition.move(edge: .top))
                         .animation(.easeIn)
-                        .padding(.vertical, 8)
-                        .padding(.horizontal, 15)
-                        
-                        ScrollView {
-                            LazyVGrid(columns: columns, spacing: 20) {
-                                ForEach(viewStore.pokemons) { pokemon in
-                                    GenerationCellView(pokemon: pokemon) {
-                                        viewStore.send(.setNavigationPokemon(selection: pokemon))
-                                    }.redacted(when: viewStore.loading, redactionType: .placeholder)
-                                }
-                            }
-                            .padding()
-                        }
-                        .animation(.easeIn)
-                        Rectangle().fill(Color.gray)
-                            .frame(height: 1)
-                        HStack {
-                            ButtonTab(text: "I", isSelect: viewStore.generation == .i) {
-                                viewStore.send(.generationChage(.i))
-                            }
-                            ButtonTab(text: "II", isSelect: viewStore.generation == .ii) {
-                                viewStore.send(.generationChage(.ii))
-                            }
-                            ButtonTab(text: "III", isSelect: viewStore.generation == .iii) {
-                                viewStore.send(.generationChage(.iii))
-                            }
-                            ButtonTab(text: "IV", isSelect: viewStore.generation == .iv) {
-                                viewStore.send(.generationChage(.iv))
-                            }
-                        }
                     }
-                    .alertView(alert: viewStore.alert,
-                               showAlert: viewStore.binding(
-                                get: { $0.showAlert },
-                                send: GenerationAction.showAlert
-                               ))
-                    NavigationLink(
-                        destination: IfLetStore(self.store.scope(state: \.pokemonState,
-                                                                 action: GenerationAction.pokemonActions),
-                                                then: PokemonDetailView.init(store:)),
-                        isActive: viewStore.binding(get: { $0.pokemonState != nil },
-                                                    send: { _ in .setNavigationPokemon(selection: nil)}),
-                        label: {
-                            EmptyView()
-                        })
-                }.navigationBarColor(.pBackgroundCard)
-                .navigationBarTitle(Text("Pokedex"), displayMode: .inline)
-                .navigationBarItems(trailing:
-                                        HStack {
-                                            Button(action: { viewStore.send(.searchTapped) }) {
-                                                Image(systemName: "magnifyingglass")
-                                                    .padding(8)
-                                            }.disabled(viewStore.search != nil)
-                                            .buttonStyle(PlainButtonStyle())
-                                            
-                                            NavigationLink(destination: VoteView(
-                                                store: Store(
-                                                    initialState: VoteState(generation: viewStore.generation,
-                                                                            pokemonsGeneration: viewStore.pokemons),
-                                                    reducer: voteReducer,
-                                                    environment: VoteEnvironment()
-                                                )
-                                            )) {
-                                                Label("", systemImage: "heart.fill")
-                                            }
-                                        }
-                )
-                .onAppear(perform: {
-                    viewStore.send(.load)
-                })
-            }
+                    ScrollView {
+                        LazyVGrid(columns: columns, spacing: 20) {
+                            ForEach(generationVM.pokemons) { pokemon in
+                                GenerationCellView(pokemon: pokemon) {
+                                    //                                    viewStore.send(.setNavigationPokemon(selection: pokemon))
+                                }.redacted(when: generationVM.loading, redactionType: .placeholder)
+                            }
+                        }
+                        .padding()
+                    }
+                    .animation(.easeIn)
+                    Rectangle().fill(Color.gray)
+                        .frame(height: 1)
+                    HStack {
+                        ButtonTab(text: "I", isSelect: generationVM.generation == .i) {
+                            generationVM.generationChage(type: .i)
+                        }
+                        ButtonTab(text: "II", isSelect: generationVM.generation == .ii) {
+                            generationVM.generationChage(type: .ii)
+                        }
+                        ButtonTab(text: "III", isSelect: generationVM.generation == .iii) {
+                            generationVM.generationChage(type: .iii)
+                        }
+                        ButtonTab(text: "IV", isSelect: generationVM.generation == .iv) {
+                            generationVM.generationChage(type: .iv)                        }
+                    }
+                }
+                //                .alertView(alert: viewStore.alert,
+                //                           showAlert: viewStore.binding(
+                //                            get: { $0.showAlert },
+                //                            send: GenerationAction.showAlert
+                //                           ))
+                
+                
+                //                NavigationLink(
+                //                    destination: IfLetStore(self.store.scope(state: \.pokemonState,
+                //                                                             action: GenerationAction.pokemonActions),
+                //                                            then: PokemonDetailView.init(store:)),
+                //                    isActive: viewStore.binding(get: { $0.pokemonState != nil },
+                //                                                send: { _ in .setNavigationPokemon(selection: nil)}),
+                //                    label: {
+                //                        EmptyView()
+                //                    })
+            }.navigationBarColor(.pBackgroundCard)
+            .navigationBarTitle(Text("Pokedex"), displayMode: .inline)
+            .navigationBarItems(trailing:
+                                    HStack {
+                                        Button(action: {
+                                            self.generationVM.isSearch = true
+                                        }) {
+                                            Image(systemName: "magnifyingglass")
+                                                .padding(8)
+                                        }.disabled(false)
+                                        .buttonStyle(PlainButtonStyle())
+                                        
+                                        //                                        NavigationLink(destination: VoteView(
+                                        //                                            store: Store(
+                                        //                                                initialState: VoteState(generation: viewStore.generation,
+                                        //                                                                        pokemonsGeneration: viewStore.pokemons),
+                                        //                                                reducer: voteReducer,
+                                        //                                                environment: VoteEnvironment()
+                                        //                                            )
+                                        //                                        )) {
+                                        //                                            Label("", systemImage: "heart.fill")
+                                        //                                        }
+                                    }
+            )
+            .onAppear(perform: {
+                generationVM.onAppear()
+            })
         }
     }
     
@@ -143,12 +133,6 @@ struct GenerationView: View {
 
 struct GenerationView_Previews: PreviewProvider {
     static var previews: some View {
-        GenerationView(
-            store: Store(
-                initialState: GenerationState(pokemons: .mock(15)),
-                reducer: generationReducer,
-                environment: GenerationEnvironment()
-            )
-        )
+        GenerationView()
     }
 }

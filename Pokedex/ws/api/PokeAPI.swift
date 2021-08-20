@@ -9,7 +9,7 @@ import Foundation
 import ComposableArchitecture
 import Combine
 
-struct ErrorMessage: Swift.Error, Equatable {
+struct ErrorMessage: Error, Equatable {
     let code: Int
     let message: String
     
@@ -45,5 +45,19 @@ struct PokeAPI {
                 ErrorMessage(200, "Error Decode")
             }
             .eraseToEffect()
+    }
+    
+    static func send<T: Decodable>(_ request: URLRequest, _ decoder: JSONDecoder = JSONDecoder()) -> AnyPublisher<T, ErrorMessage> {
+        return URLSession.shared
+            .dataTaskPublisher(for: request)
+            .mapError{
+                ErrorMessage($0.errorCode, $0.localizedDescription)
+            }
+            .map { $0.data }
+            .decode(type: T.self, decoder: jsonDecoder)
+            .mapError { _ in
+                ErrorMessage(200, "Error Decode")
+            }
+            .eraseToAnyPublisher()
     }
 }

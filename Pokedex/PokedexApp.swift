@@ -15,13 +15,7 @@ struct PokedexApp: App {
     
     var body: some Scene {
         WindowGroup {
-            GenerationView(
-                store: Store(
-                    initialState: GenerationState(),
-                    reducer: generationReducer,
-                    environment: GenerationEnvironment()
-                )
-            )
+            GenerationView()
         }
     }
 }
