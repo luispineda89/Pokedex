@@ -8,12 +8,7 @@
 import Foundation
 import ComposableArchitecture
 
-//MARK:- State
-struct MoveDetailState: Equatable {
-    var pokemonMove: PokemonMoveModel
-    var move: MoveModel = .mock
-    var loading: Bool = false
-}
+
 
 //MARK:- Action
 enum MoveDetailAction: Equatable {

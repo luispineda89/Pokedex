@@ -25,7 +25,6 @@ enum FontSizeType: CGFloat {
 }
 
 struct TextFontSize: ViewModifier {
-    
     var size: CGFloat = FontSizeType.text.rawValue
     var color: Color = Color.pPrimaryText
     var decoration: DecorationType = .regular

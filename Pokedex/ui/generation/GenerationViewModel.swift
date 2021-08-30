@@ -6,24 +6,45 @@
 //
 
 import Foundation
-import Combine
 
-class GenerationViewModel: ObservableObject {
+enum GenerationType: Int {
+    case i = 1
+    case ii, iii, iv
     
-    @Published var loading: Bool = true
-    @Published var generation: GenerationType = .i
-    @Published var pokemons: [PokemonModel] = .mock(15)
-    @Published var pokemonsAux: [PokemonModel] = []
-    @Published var isSearch: Bool = false {
+    var text: String {
+        switch self {
+        case .i:
+            return "I"
+        case .ii:
+            return "II"
+        case .iii:
+            return "III"
+        case .iv:
+            return "IV"
+        }
+    }
+}
+
+//MARK:- State
+struct GenerationState: Equatable {
+    var loading: Bool = false
+    var generation: GenerationType = .i
+    var isSelectPokemon: Bool = false
+    var pokemon: PokemonModel = PokemonModel()
+    var pokemons: [PokemonModel] = .mock(15)
+    var pokemonsAux: [PokemonModel] = []
+    var showAlert: Bool = false
+    var isSearch: Bool = false {
         didSet {
             if isSearch {
                 pokemonsAux = pokemons
             } else {
+                query = ""
                 pokemonsAux = []
             }
         }
     }
-    @Published var query: String = "" {
+    var query: String = "" {
         didSet {
             if query.isEmpty {
                 pokemons = pokemonsAux
@@ -32,41 +53,46 @@ class GenerationViewModel: ObservableObject {
             }
         }
     }
+    var alert: AlertModel = AlertModel()
     
-    private var generationRepository: GenerationRepositoryProtocol
-    private var cancellables = Set<AnyCancellable>()
+    mutating func alertError(error: String) {
+        self.alert.set(id: 1,
+                       title: "Error!",
+                       text: "Error: \(error).!",
+                       textClose: "Cerrar",
+                       type: .error)
+    }
+}
+
+//MARK:- ViewModel
+class GenerationViewModel: ObservableObject {
     
-    init(generationRepository: GenerationRepositoryProtocol = GenerationRepository()) {
-        self.generationRepository = generationRepository
+    @Published var state: GenerationState  = GenerationState()
+    
+    private var generationInteractor: GenerationInteractorProtocol
+    
+    init(generationInteractor: GenerationInteractorProtocol = GenerationInteractor()) {
+        self.generationInteractor = generationInteractor
     }
     
     public func onAppear() {
-        getPokemos(id: generation.rawValue)
+        getPokemos(id: state.generation.rawValue)
     }
     
     func generationChage(type: GenerationType) {
-        generation = type
-        loading = true
+        state.generation = type
         getPokemos(id: type.rawValue)
     }
     
-    private func  getPokemos(id: Int) {
-        generationRepository.generation(id: id)
-            .receive(on: DispatchQueue.main)
-            .sink { completion in
-                switch completion {
-                case .failure(let error):
-                    print(error)
-                case .finished: break
-                }
-            } receiveValue: { [weak self] generation in
-                self?.pokemons = generation.pokemon.map {
-                    return PokemonModel(id: Pokemon.getId(url: $0.url),name: $0.name, url: $0.url)
-                }
-            }
-            .store(in: &cancellables)
-            loading = false
-
+    private func getPokemos(id: Int) {
+        state.loading = true
+        generationInteractor.generation(id: id) { pokemons in
+            self.state.pokemons = pokemons
+            self.state.loading = false
+        } failure: { error in
+            self.state.alertError(error: error)
+            self.state.showAlert = true
+            self.state.loading = false
+        }
     }
-    
 }

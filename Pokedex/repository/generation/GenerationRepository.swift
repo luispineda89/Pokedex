@@ -2,26 +2,47 @@
 //  GenerationRepository.swift
 //  Pokedex
 //
-//  Created by Luis Pineda on 19/08/21.
+//  Created by Luis Pineda on 25/08/21.
 //
 
 import Foundation
 import Combine
 
 protocol GenerationRepositoryProtocol {
-    var network: NetworkProtocol { get }
-    func generation (id: Int) -> AnyPublisher<GenerationModel, Error>
+    func generation (id: Int,
+                     success: @escaping ([PokemonModel])->(),
+                     failure: @escaping (String)->()) -> ()
 }
 
 class GenerationRepository: GenerationRepositoryProtocol {
-    var network: NetworkProtocol
+
+    private var cancellables = Set<AnyCancellable>()
+    private var service: GenerationServiceProtocol
     
-    init(network: NetworkProtocol = Network()) {
-        self.network = network
+    init(service: GenerationServiceProtocol = GenerationService()) {
+        self.service = service
     }
     
-    func generation(id: Int) -> AnyPublisher<GenerationModel, Error> {
-        return network.get(type: GenerationModel.self,
-                           urlRequest: Endpoint.generation(id))
-    }   
+    func generation(id: Int,
+                    success: @escaping ([PokemonModel]) -> (),
+                    failure: @escaping (String) -> ()) {
+        service.generation(id: id)
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .failure(let error):
+                    failure(error.localizedDescription)
+                case .finished: break
+                }
+            } receiveValue: { generation in
+                let pokemons = generation.pokemon.map {
+                    return PokemonModel(id: Pokemon.getId(url: $0.url),name: $0.name, url: $0.url)
+                }
+                success(pokemons)
+            }
+            .store(in: &cancellables)
+            
+    }
+    
+    
 }

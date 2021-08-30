@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import ComposableArchitecture
 
 struct GenerationView: View {
     
@@ -14,73 +13,44 @@ struct GenerationView: View {
         GridItem(.adaptive(minimum: 100))
     ]
     
-    @ObservedObject var generationVM: GenerationViewModel = GenerationViewModel()
+    @ObservedObject var generationVM: GenerationViewModel
     
     var body: some View {
         NavigationView {
             ZStack {
                 Color.pBackground.ignoresSafeArea(.all)
                 VStack(spacing: 0.0) {
-                    if generationVM.isSearch {
-                        SearchBarView(query: $generationVM.query) {
-                            self.generationVM.isSearch = false
+                    if generationVM.state.isSearch {
+                        SearchBarView(query: $generationVM.state.query) {
+                            self.generationVM.state.isSearch = false
                         }
                         .transition(AnyTransition.move(edge: .top))
                         .animation(.easeIn)
                     }
-                    ScrollView {
-                        LazyVGrid(columns: columns, spacing: 20) {
-                            ForEach(generationVM.pokemons) { pokemon in
-                                GenerationCellView(pokemon: pokemon) {
-                                    //                                    viewStore.send(.setNavigationPokemon(selection: pokemon))
-                                }.redacted(when: generationVM.loading, redactionType: .placeholder)
-                            }
-                        }
-                        .padding()
-                    }
-                    .animation(.easeIn)
+                    ListPokemons(generationVM: generationVM)
                     Rectangle().fill(Color.gray)
                         .frame(height: 1)
-                    HStack {
-                        ButtonTab(text: "I", isSelect: generationVM.generation == .i) {
-                            generationVM.generationChage(type: .i)
-                        }
-                        ButtonTab(text: "II", isSelect: generationVM.generation == .ii) {
-                            generationVM.generationChage(type: .ii)
-                        }
-                        ButtonTab(text: "III", isSelect: generationVM.generation == .iii) {
-                            generationVM.generationChage(type: .iii)
-                        }
-                        ButtonTab(text: "IV", isSelect: generationVM.generation == .iv) {
-                            generationVM.generationChage(type: .iv)                        }
-                    }
+                    ButtonsTab(generationVM: generationVM)
                 }
-                //                .alertView(alert: viewStore.alert,
-                //                           showAlert: viewStore.binding(
-                //                            get: { $0.showAlert },
-                //                            send: GenerationAction.showAlert
-                //                           ))
-                
-                
-                //                NavigationLink(
-                //                    destination: IfLetStore(self.store.scope(state: \.pokemonState,
-                //                                                             action: GenerationAction.pokemonActions),
-                //                                            then: PokemonDetailView.init(store:)),
-                //                    isActive: viewStore.binding(get: { $0.pokemonState != nil },
-                //                                                send: { _ in .setNavigationPokemon(selection: nil)}),
-                //                    label: {
-                //                        EmptyView()
-                //                    })
+                .alertView(alert: generationVM.state.alert,
+                           showAlert: $generationVM.state.showAlert)
+                NavigationLink(
+                    destination: PokemonDetailConfigurator.configurePokemonDetailView(with: generationVM.state.pokemon),
+                    isActive: $generationVM.state.isSelectPokemon,
+                    label: {
+                        EmptyView()
+                    })
             }.navigationBarColor(.pBackgroundCard)
             .navigationBarTitle(Text("Pokedex"), displayMode: .inline)
             .navigationBarItems(trailing:
                                     HStack {
                                         Button(action: {
-                                            self.generationVM.isSearch = true
+                                            self.generationVM.state.isSearch = true
                                         }) {
                                             Image(systemName: "magnifyingglass")
                                                 .padding(8)
                                         }.disabled(false)
+                                        .accessibilityIdentifier("searchButton")
                                         .buttonStyle(PlainButtonStyle())
                                         
                                         //                                        NavigationLink(destination: VoteView(
@@ -98,6 +68,46 @@ struct GenerationView: View {
             .onAppear(perform: {
                 generationVM.onAppear()
             })
+        }
+    }
+    
+    struct ListPokemons: View {
+        let columns = [
+            GridItem(.adaptive(minimum: 100))
+        ]
+        @ObservedObject var generationVM: GenerationViewModel
+        var body: some View {
+            ScrollView {
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(generationVM.state.pokemons) { pokemon in
+                        GenerationCellView(pokemon: pokemon) {
+                            generationVM.state.pokemon = pokemon
+                            generationVM.state.isSelectPokemon = true
+                        }.redacted(when: generationVM.state.loading, redactionType: .placeholder)
+                    }
+                }
+                .padding()
+            }
+            .animation(.easeIn)
+        }
+    }
+    
+    struct ButtonsTab: View {
+        @ObservedObject var generationVM: GenerationViewModel
+        var body: some View {
+            HStack {
+                ButtonTab(text: "I", isSelect: generationVM.state.generation == .i) {
+                    generationVM.generationChage(type: .i)
+                }
+                ButtonTab(text: "II", isSelect: generationVM.state.generation == .ii) {
+                    generationVM.generationChage(type: .ii)
+                }
+                ButtonTab(text: "III", isSelect: generationVM.state.generation == .iii) {
+                    generationVM.generationChage(type: .iii)
+                }
+                ButtonTab(text: "IV", isSelect: generationVM.state.generation == .iv) {
+                    generationVM.generationChage(type: .iv)                        }
+            }
         }
     }
     
@@ -133,6 +143,6 @@ struct GenerationView: View {
 
 struct GenerationView_Previews: PreviewProvider {
     static var previews: some View {
-        GenerationView()
+        GenerationConfiguration.configuration()
     }
 }

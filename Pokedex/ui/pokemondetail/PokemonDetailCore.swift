@@ -9,17 +9,6 @@ import Foundation
 import ComposableArchitecture
 import SwiftUI
 
-//MARK:- State
-struct PokemonDetailState: Equatable {
-    var pokemon: PokemonModel
-    var pokemonSpecies: PokemonSpeciesModel = .init()
-    var pokemonDetail: PokemonDetailModel = .init()
-    var type: [PokemonType] = []
-    var abilities: [AbilityModel] = []
-    var colorBackground: Color = .pBackground
-    var moveState: MoveDetailState?
-}
-
 //MARK:- Action
 enum PokemonDetailAction: Equatable {
     case load

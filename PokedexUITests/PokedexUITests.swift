@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import Pokedex
 
 class PokedexUITests: XCTestCase {
 
@@ -22,13 +23,16 @@ class PokedexUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
+    func testViewInitial() throws {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let generationNavBarTitle = app.staticTexts["Pokedex"]
+        XCTAssert(generationNavBarTitle.exists)
+        XCTAssert(app.buttons["I"].exists)
+        XCTAssert(app.buttons["II"].exists)
+        XCTAssert(app.buttons["III"].exists)
+        XCTAssert(app.buttons["IV"].exists)
     }
 
     func testLaunchPerformance() throws {

@@ -48,6 +48,7 @@ struct GenerationCellView: View {
             .onDisappear {
                 isAnimating = false
             }
+            
         }).buttonStyle(PlainButtonStyle())
     }
 }

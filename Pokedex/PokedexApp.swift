@@ -15,7 +15,7 @@ struct PokedexApp: App {
     
     var body: some Scene {
         WindowGroup {
-            GenerationView()
+            GenerationConfiguration.configuration()
         }
     }
 }

@@ -7,10 +7,18 @@
 
 import Foundation
 
-struct PokemonModel: Identifiable, Hashable, Codable {
+struct PokemonModel: Identifiable, Hashable, Codable, Equatable {
     var id: Int
     var name: String
     var url: String
+    
+    init(id: Int = 1,
+         name: String = "",
+         url: String = "") {
+    self.id = id
+    self.name = name
+    self.url = url
+    }
 }
 
 //MARK:- Mock

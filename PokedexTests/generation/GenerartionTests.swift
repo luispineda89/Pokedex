@@ -7,181 +7,93 @@
 
 import XCTest
 @testable import Pokedex
-import ComposableArchitecture
 
 class GenerartionTests: XCTestCase {
-    let testScheduler = DispatchQueue.test
+    
+    func testLoadGenerationInREpository() throws {
+        let exp = expectation(description: "expectation Loading generation")
+        let repository = GenerationRepository(service: GenerationServiceMock(generation: GenerationModel.mock))
+        var pokemons2: [PokemonModel] = []
+        repository.generation(id: 1) { pokemons in
+            print("\(pokemons.count)")
+            pokemons2 = pokemons
+            exp.fulfill()
+        } failure: { error in
+            print(error)
+        }
+        waitForExpectations(timeout: 3)
+        XCTAssertGreaterThanOrEqual(pokemons2.count, 2)
+    }
     
     func testLoadSuccess() throws {
-        let store = TestStore(
-            initialState: GenerationState(),
-            reducer: generationReducer,
-            environment: GenerationEnvironment(
-                generationClient: .mock(generation: { _ in Effect(value: .mock)} ),
-                mainQueue: testScheduler.eraseToAnyScheduler())
-        )
-        store.assert(
-            .send(.load) {
-                $0.didAppear = true
-                $0.loading = true
-            },
-            .do { self.testScheduler.advance() },
-            .receive(.generationResponse(.success(.mock))) {
-                $0.pokemons = .mock(2)
-                $0.loading = false
-            },
-            .send(.load)
-        )
+        let exp = expectation(description: "expectation Loading generation")
+        let repository = GenerationRepository(service: GenerationServiceMock(generation: GenerationModel.mock))
+        let viewModel = GenerationViewModel(generationRepository: repository)
+        viewModel.onAppear()
+        XCTAssertTrue(viewModel.state.loading)
+        XCTAssertEqual(viewModel.state.generation, .i)
+        XCTAssertEqual(viewModel.state.generation.text, "I")
+        XCTAssertEqual(viewModel.state.pokemons.count, 15)
+        _ = XCTWaiter.wait(for: [exp], timeout: 1.0) // wait and store the result
+        XCTAssertFalse(viewModel.state.loading)
+        XCTAssertEqual(viewModel.state.pokemons.count, 2)
+        XCTAssertFalse(viewModel.state.showAlert)
     }
     
     func testLoadError() throws {
-        let store = TestStore(
-            initialState: GenerationState(),
-            reducer: generationReducer,
-            environment: GenerationEnvironment(
-                generationClient: .mock(generation: { _ in Effect(error: ErrorMessage(404, "Page Not Found"))} ),
-                mainQueue: testScheduler.eraseToAnyScheduler())
-        )
-        store.assert(
-            .send(.load) {
-                $0.didAppear = true
-                $0.loading = true
-            },
-            .do { self.testScheduler.advance() },
-            .receive(.generationResponse(.failure(ErrorMessage(404, "Page Not Found")))) {
-                $0.loading = false
-                $0.alert = AlertModel(title: "Error!",
-                                      text: "Error: Page Not Found.!",
-                                      textClose: "Cerrar",
-                                      textConfirm: "TEXT_CONFIRM",
-                                      type: AlertType.error)
-                $0.showAlert = true
-            },
-            .send(.showAlert(false)) {
-                $0.showAlert = false
-            }
-        )
+        let exp = expectation(description: "expectation Loading generation")
+        let repository = GenerationRepository(service: GenerationServiceMock(generation: nil))
+        let viewModel = GenerationViewModel(generationRepository: repository)
+        viewModel.onAppear()
+        XCTAssertTrue(viewModel.state.loading)
+        XCTAssertEqual(viewModel.state.generation, .i)
+        XCTAssertEqual(viewModel.state.pokemons.count, 15)
+        _ = XCTWaiter.wait(for: [exp], timeout: 1.0) // wait and store the result
+        XCTAssertFalse(viewModel.state.loading)
+        XCTAssertTrue(viewModel.state.showAlert)
+        XCTAssertEqual(viewModel.state.alert.title, "Error!")
     }
     
-    func testGenerationChange() throws {
-        let store = TestStore(
-            initialState: GenerationState(generation: .i, pokemons: .mock(2)),
-            reducer: generationReducer,
-            environment: GenerationEnvironment(
-                generationClient: .mock(generation: { _ in Effect(value: .mock(id: 2, pokemon: .mock(3)))} ),
-                mainQueue: testScheduler.eraseToAnyScheduler())
-        )
-        store.assert(
-            .send(.generationChage(GenerationType.ii)) {
-                $0.generation = GenerationType.ii
-                XCTAssertEqual($0.generation.text, "II")
-                $0.loading = true
-            },
-            .do { self.testScheduler.advance() },
-            .receive(.generationResponse(.success(.mock(id: 2, pokemon: .mock(3))))) {
-                $0.pokemons = .mock(3)
-                $0.loading = false
-                
-            }
-        )
+    func testSearch() throws {
+        let exp = expectation(description: "expectation Search generation")
+        let repository = GenerationRepository(service: GenerationServiceMock(generation: GenerationModel.mock))
+        let viewModel = GenerationViewModel(generationRepository: repository)
+        viewModel.onAppear()
+        XCTAssertTrue(viewModel.state.loading)
+        XCTAssertEqual(viewModel.state.generation, .i)
+        XCTAssertEqual(viewModel.state.pokemons.count, 15)
+        _ = XCTWaiter.wait(for: [exp], timeout: 1.0) // wait and store the result
+        viewModel.state.isSearch = true
+        viewModel.state.query = "pokemon 1"
+        XCTAssertEqual(viewModel.state.pokemonsAux.count, 2)
+        XCTAssertEqual(viewModel.state.pokemons.count, 1)
+        viewModel.state.isSearch = false
+        XCTAssertEqual(viewModel.state.query, "")
+        XCTAssertEqual(viewModel.state.pokemonsAux.count, 0)
+        XCTAssertEqual(viewModel.state.pokemons.count, 2)
     }
     
-    func testSearchSuccess() throws {
-        let store = TestStore(
-            initialState: GenerationState(pokemons: .mock(2)),
-            reducer: generationReducer,
-            environment: GenerationEnvironment(
-                generationClient: .mock,
-                mainQueue: testScheduler.eraseToAnyScheduler())
-        )
-        store.assert(
-            .send(.searchTapped) {
-                $0.search = .init(query: "")
-                $0._pokemons = $0.pokemons
-            },
-            .send(.search(.queryChanged(""))),
-            .send(.search(.queryChanged("pokemon 2"))) {
-                $0.search?.query = "pokemon 2"
-                $0.pokemons = [PokemonModel(id: 2,
-                                            name: "pokemon 2",
-                                            url: "https://pokeapi.co/api/v2/pokemon-species/2/")]
-                
-            },
-            .send(.search(.queryChanged(""))) {
-                $0.search?.query = ""
-                $0.pokemons = $0._pokemons
-            },
-            .send(.search(.cancel)) {
-                $0.search?.query = ""
-                $0.pokemons = $0._pokemons
-                $0._pokemons = []
-                $0.search = nil
-                
-            }
-        )
+    func testGenerationChangeSuccess() throws {
+        let exp = expectation(description: "expectation Loading generation")
+        let repository = GenerationRepository(service: GenerationServiceMock(generation: GenerationModel.mock))
+        let viewModel = GenerationViewModel(generationRepository: repository)
+        viewModel.onAppear()
+        XCTAssertTrue(viewModel.state.loading)
+        XCTAssertEqual(viewModel.state.generation, .i)
+        XCTAssertEqual(viewModel.state.generation.text, "I")
+        XCTAssertEqual(viewModel.state.pokemons.count, 15)
+        _ = XCTWaiter.wait(for: [exp], timeout: 1.0) // wait and store the result
+        XCTAssertFalse(viewModel.state.loading)
+        XCTAssertEqual(viewModel.state.pokemons.count, 2)
+        XCTAssertFalse(viewModel.state.showAlert)
+        let exp2 = expectation(description: "expectation Change generation")
+        viewModel.generationChage(type: .ii)
+        XCTAssertTrue(viewModel.state.loading)
+        XCTAssertEqual(viewModel.state.generation, .ii)
+        XCTAssertEqual(viewModel.state.generation.text, "II")
+        _ = XCTWaiter.wait(for: [exp2], timeout: 1.0) // wait and store the result
+        XCTAssertFalse(viewModel.state.loading)
+        XCTAssertEqual(viewModel.state.pokemons.count, 2)
     }
     
-    func testGenerationChangeAndSearch() throws {
-        let store = TestStore(
-            initialState: GenerationState(generation: .i, search: SearchState(query: "pokemon 2"), pokemons: .mock(2)),
-            reducer: generationReducer,
-            environment: GenerationEnvironment(
-                generationClient: .mock(generation: { _ in Effect(value: .mock(id: 2, pokemon: .mock(3)))} ),
-                mainQueue: testScheduler.eraseToAnyScheduler())
-        )
-        store.assert(
-            .send(.generationChage(GenerationType.ii)) {
-                $0.generation = GenerationType.ii
-                $0.loading = true
-            },
-            .do { self.testScheduler.advance() },
-            .receive(.generationResponse(.success(.mock(id: 2, pokemon: .mock(3))))) {
-                $0.loading = false
-                $0._pokemons = .mock(3)
-                $0.search?.query = "pokemon 2"
-                $0.pokemons = [PokemonModel(id: 2, name: "pokemon 2", url: "https://pokeapi.co/api/v2/pokemon-species/2/")]
-            }
-        )
-    }
-    
-    func testGenerationChangeAndSearchEmpty() throws {
-        let store = TestStore(
-            initialState: GenerationState(generation: .i, search: SearchState(query: ""), pokemons: .mock(2)),
-            reducer: generationReducer,
-            environment: GenerationEnvironment(
-                generationClient: .mock(generation: { _ in Effect(value: .mock(id: 2, pokemon: .mock(3)))} ),
-                mainQueue: testScheduler.eraseToAnyScheduler())
-        )
-        store.assert(
-            .send(.generationChage(GenerationType.ii)) {
-                $0.generation = GenerationType.ii
-                $0.loading = true
-            },
-            .do { self.testScheduler.advance() },
-            .receive(.generationResponse(.success(.mock(id: 2, pokemon: .mock(3))))) {
-                $0.loading = false
-                $0._pokemons = .mock(3)
-                $0.pokemons = .mock(3)
-            }
-        )
-    }
-    
-    func testNavigationPokemon() throws {
-        let store = TestStore(
-            initialState: GenerationState(generation: .i, pokemons: .mock(2)),
-            reducer: generationReducer,
-            environment: GenerationEnvironment(
-                generationClient: .mock,
-                mainQueue: testScheduler.eraseToAnyScheduler())
-        )
-        store.assert(
-            .send(.setNavigationPokemon(selection: .mock)) {
-                $0.pokemonState = .init(pokemon: .mock)
-            },
-            .send(.setNavigationPokemon(selection: nil)),
-            .send(.pokemonActions(.onDisappear)) {
-                $0.pokemonState = nil
-            }
-        )
-    }
 }
