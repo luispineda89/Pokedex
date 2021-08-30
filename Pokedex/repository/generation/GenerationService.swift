@@ -24,22 +24,3 @@ class GenerationService: GenerationServiceProtocol {
                            urlRequest: Endpoint.generation(id))
     }   
 }
-
-//MARK:- Mock
-#if DEBUG
-class GenerationServiceMock: GenerationServiceProtocol {
-    
-    var generation: GenerationModel?
-    
-    init(generation: GenerationModel?) {
-        self.generation = generation
-    }
-    
-    func generation(id: Int) -> AnyPublisher<GenerationModel, Error> {
-        guard let generationModel = generation else {
-            return Result<GenerationModel, Error>.Publisher(URLError(.timedOut)).eraseToAnyPublisher()
-        }
-        return Result<GenerationModel, Error>.Publisher(generationModel).eraseToAnyPublisher()
-    }
-}
-#endif

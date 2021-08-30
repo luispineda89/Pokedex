@@ -41,8 +41,5 @@ class GenerationRepository: GenerationRepositoryProtocol {
                 success(pokemons)
             }
             .store(in: &cancellables)
-            
     }
-    
-    
 }

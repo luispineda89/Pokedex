@@ -6,7 +6,6 @@
 //
 
 import XCTest
-@testable import Pokedex
 
 class PokedexUITests: XCTestCase {
 

@@ -59,9 +59,14 @@
 		2096D0C4269643FA0054861D /* AlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2096D0C3269643FA0054861D /* AlertModel.swift */; };
 		2096D0C7269644310054861D /* ButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2096D0C6269644310054861D /* ButtonsView.swift */; };
 		2096D0CC269644E00054861D /* Redactable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2096D0CB269644E00054861D /* Redactable.swift */; };
-		2096D0CF269666AD0054861D /* GenerartionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2096D0CE269666AD0054861D /* GenerartionTests.swift */; };
+		2096D0CF269666AD0054861D /* GenerartionViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2096D0CE269666AD0054861D /* GenerartionViewModelTests.swift */; };
 		2096D0D12696AC9F0054861D /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2096D0D02696AC9F0054861D /* Endpoint.swift */; };
 		20B0162E26CEA9E900D39D2A /* GenerationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B0162D26CEA9E900D39D2A /* GenerationViewModel.swift */; };
+		20D2740C26DD25B1009F32CC /* GenerationInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D2740B26DD25B1009F32CC /* GenerationInteractorTests.swift */; };
+		20D2740E26DD2604009F32CC /* GenerationRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D2740D26DD2604009F32CC /* GenerationRepositoryTests.swift */; };
+		20D2741126DD3914009F32CC /* GenerationInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D2741026DD3914009F32CC /* GenerationInteractorMock.swift */; };
+		20D2741326DD39D4009F32CC /* GenerationRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D2741226DD39D4009F32CC /* GenerationRepositoryMock.swift */; };
+		20D2741526DD3A12009F32CC /* GenerationServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D2741426DD3A12009F32CC /* GenerationServiceMock.swift */; };
 		20D924662695425E009A2BA0 /* PokedexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D924652695425E009A2BA0 /* PokedexApp.swift */; };
 		20D9246A26954260009A2BA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20D9246926954260009A2BA0 /* Assets.xcassets */; };
 		20D9246D26954260009A2BA0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20D9246C26954260009A2BA0 /* Preview Assets.xcassets */; };
@@ -142,9 +147,14 @@
 		2096D0C3269643FA0054861D /* AlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModel.swift; sourceTree = "<group>"; };
 		2096D0C6269644310054861D /* ButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsView.swift; sourceTree = "<group>"; };
 		2096D0CB269644E00054861D /* Redactable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Redactable.swift; sourceTree = "<group>"; };
-		2096D0CE269666AD0054861D /* GenerartionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerartionTests.swift; sourceTree = "<group>"; };
+		2096D0CE269666AD0054861D /* GenerartionViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerartionViewModelTests.swift; sourceTree = "<group>"; };
 		2096D0D02696AC9F0054861D /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		20B0162D26CEA9E900D39D2A /* GenerationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationViewModel.swift; sourceTree = "<group>"; };
+		20D2740B26DD25B1009F32CC /* GenerationInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationInteractorTests.swift; sourceTree = "<group>"; };
+		20D2740D26DD2604009F32CC /* GenerationRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationRepositoryTests.swift; sourceTree = "<group>"; };
+		20D2741026DD3914009F32CC /* GenerationInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationInteractorMock.swift; sourceTree = "<group>"; };
+		20D2741226DD39D4009F32CC /* GenerationRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationRepositoryMock.swift; sourceTree = "<group>"; };
+		20D2741426DD3A12009F32CC /* GenerationServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationServiceMock.swift; sourceTree = "<group>"; };
 		20D924622695425E009A2BA0 /* Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20D924652695425E009A2BA0 /* PokedexApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexApp.swift; sourceTree = "<group>"; };
 		20D9246926954260009A2BA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -392,9 +402,22 @@
 		2096D0CD269666930054861D /* generation */ = {
 			isa = PBXGroup;
 			children = (
-				2096D0CE269666AD0054861D /* GenerartionTests.swift */,
+				20D2740F26DD38F4009F32CC /* mocks */,
+				2096D0CE269666AD0054861D /* GenerartionViewModelTests.swift */,
+				20D2740B26DD25B1009F32CC /* GenerationInteractorTests.swift */,
+				20D2740D26DD2604009F32CC /* GenerationRepositoryTests.swift */,
 			);
 			path = generation;
+			sourceTree = "<group>";
+		};
+		20D2740F26DD38F4009F32CC /* mocks */ = {
+			isa = PBXGroup;
+			children = (
+				20D2741026DD3914009F32CC /* GenerationInteractorMock.swift */,
+				20D2741226DD39D4009F32CC /* GenerationRepositoryMock.swift */,
+				20D2741426DD3A12009F32CC /* GenerationServiceMock.swift */,
+			);
+			path = mocks;
 			sourceTree = "<group>";
 		};
 		20D924592695425E009A2BA0 = {
@@ -800,10 +823,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20D2741526DD3A12009F32CC /* GenerationServiceMock.swift in Sources */,
 				201FF83B2697F2DB007BB7F7 /* PokemonDetailTests.swift in Sources */,
+				20D2740E26DD2604009F32CC /* GenerationRepositoryTests.swift in Sources */,
+				20D2740C26DD25B1009F32CC /* GenerationInteractorTests.swift in Sources */,
 				201FF83E2697FDB9007BB7F7 /* MoveDetailTests.swift in Sources */,
-				2096D0CF269666AD0054861D /* GenerartionTests.swift in Sources */,
+				2096D0CF269666AD0054861D /* GenerartionViewModelTests.swift in Sources */,
+				20D2741126DD3914009F32CC /* GenerationInteractorMock.swift in Sources */,
 				2072DE772698FAA400B3F45A /* VoteTests.swift in Sources */,
+				20D2741326DD39D4009F32CC /* GenerationRepositoryMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
