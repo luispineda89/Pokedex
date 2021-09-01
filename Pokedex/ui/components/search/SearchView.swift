@@ -18,6 +18,7 @@ public struct SearchBarView: View {
                 Image(systemName: "magnifyingglass")
                 TextField("Search Pokemon",
                           text: $query)
+                    .accessibilityIdentifier("searchTextField")
                 Button(action: {
                     self.query = ""
                 }) {

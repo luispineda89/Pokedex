@@ -184,6 +184,7 @@ struct PokemonDetailView: View {
                             }
                         }.padding(.bottom, 10)
                     }.fixedSize(horizontal: false, vertical: true)
+                    .accessibilityIdentifier("SVAbilities")
                 }
             }.padding(.horizontal, 30)
         }
@@ -238,7 +239,7 @@ struct PokemonDetailView: View {
                         }
                     }.padding(.bottom, 10)
                     .padding(.horizontal)
-                }
+                }.accessibilityIdentifier("SVMoves")
             }.padding(.horizontal)
         }
     }

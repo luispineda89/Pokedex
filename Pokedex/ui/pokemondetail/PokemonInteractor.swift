@@ -1,5 +1,5 @@
 //
-//  PokemonDetailInteractor.swift
+//  PokemonInteractor.swift
 //  Pokedex
 //
 //  Created by Luis Pineda on 27/08/21.
